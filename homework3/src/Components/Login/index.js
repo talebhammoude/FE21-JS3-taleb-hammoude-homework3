@@ -3,8 +3,21 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
 
 const Login = () => {
+
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+
+
+  const signIn = ()=> {
+    console.log(email + password);
+  }
+
+
   return (
     <Container>
       <Row>
@@ -13,15 +26,15 @@ const Login = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ange e-postadress</Form.Label>
-              <Form.Control type="email" placeholder="E-postadress" />
+              <Form.Control onChange={(event)=>{setEmail(event.target.value)}} type="email" placeholder="E-postadress" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Ange lösenordet</Form.Label>
-              <Form.Control type="password" placeholder="Lösenordet" />
+              <Form.Control onChange={(event)=>{setPassword(event.target.value)}} type="password" placeholder="Lösenordet" />
             </Form.Group>
 
-            <Button variant="success" type="submit">
+            <Button onClick={signIn} variant="success">
               Logga in
             </Button>
           </Form>
