@@ -7,12 +7,19 @@ import { useState } from "react";
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from "../../Firebase";
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from "../ErrorModal";
+
 
 const Login = () => {
 
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
   
 
 
@@ -25,6 +32,7 @@ const Login = () => {
 
   return (
     <Container>
+      <ErrorModal showmodal = {showModal}  handleCloseModal={handleCloseModal}/>
       <Row>
         <Col xs></Col>
         <Col xs={{ order: 12 }}>
@@ -48,6 +56,7 @@ const Login = () => {
         </Col>
         <Col xs={{ order: 1 }}></Col>
       </Row>
+      <Button onClick={handleShowModal}>Showmodal</Button>
     </Container>
   );
 };

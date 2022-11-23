@@ -21,7 +21,7 @@ const Signup = ()=> {
 
   const signUp = ()=> {
     createUserWithEmailAndPassword(auth, email, password)
-    .then(auth => {navigate('/')})
+    .then(auth => {navigate('/');})
     .catch(error => console.log(error))
   }
 
