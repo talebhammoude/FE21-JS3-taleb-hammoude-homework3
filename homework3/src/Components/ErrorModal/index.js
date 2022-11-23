@@ -9,7 +9,7 @@ const ErrorModal = (props) => {
     <>
       <Modal show={props.showmodal} onHide={props.handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Fel användarnamn eller lösenord!</Modal.Title>
+          <Modal.Title>{props.errorText}</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.handleCloseModal}>

@@ -16,6 +16,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
 
   const handleCloseModal = () => setShowModal(false);
@@ -26,13 +27,13 @@ const Login = () => {
   const signIn = ()=> {
     signInWithEmailAndPassword(auth, email, password)
     .then(auth => {navigate('/home')})
-    .catch(error => {console.log(error); handleShowModal(); })
+    .catch(error => {console.log(error); handleShowModal(); setErrorText("Fel användarnamn eller lösenord!")})
   }
 
 
   return (
     <Container>
-      <ErrorModal showmodal = {showModal}  handleCloseModal={handleCloseModal}/>
+      <ErrorModal showmodal = {showModal}  handleCloseModal={handleCloseModal}  errorText={errorText}/>
       <Row>
         <Col xs></Col>
         <Col xs={{ order: 12 }}>
