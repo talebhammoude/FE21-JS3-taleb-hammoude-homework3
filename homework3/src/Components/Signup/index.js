@@ -43,12 +43,12 @@ const Signup = ()=> {
           <Col xs={{ order: 12 }}>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Registrera nytt konto!</Form.Label>
+                <Form.Label>Skapa ny e-postadress</Form.Label>
                 <Form.Control onChange={(event)=>{setEmail(event.target.value)}} type="email" placeholder="Ange e-postadress" />
               </Form.Group>
   
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Vilket lösenord ska du ha?</Form.Label>
+                <Form.Label>Välj ett lösenord</Form.Label>
                 <Form.Control onChange={(event)=>{setPassword(event.target.value)}} type="password" placeholder="Ange ett lösenord" />
               </Form.Group>
   
