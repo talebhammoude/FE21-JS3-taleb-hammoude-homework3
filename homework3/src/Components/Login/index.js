@@ -26,7 +26,7 @@ const Login = () => {
   const signIn = ()=> {
     signInWithEmailAndPassword(auth, email, password)
     .then(auth => {navigate('/home')})
-    .catch(error => console.log(error))
+    .catch(error => {console.log(error); handleShowModal(); })
   }
 
 
@@ -56,7 +56,6 @@ const Login = () => {
         </Col>
         <Col xs={{ order: 1 }}></Col>
       </Row>
-      <Button onClick={handleShowModal}>Showmodal</Button>
     </Container>
   );
 };

@@ -16,7 +16,7 @@ const Cinema = () => {
       <Row>
         <Col xs></Col>
         <Col xs={{ order: 12 }}>
-          <div>Welcome {user?.email}</div>
+          <div>Välkommen {user?.email}</div>
 
           <Button onClick={()=>{auth.signOut(); navigate('/');}} variant="danger">
               Logga ut
