@@ -6,10 +6,11 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from "../../Firebase";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
@@ -17,7 +18,7 @@ const Login = () => {
 
   const signIn = ()=> {
     signInWithEmailAndPassword(auth, email, password)
-    .then(auth => console.log(auth))
+    .then(auth => {navigate('/home')})
     .catch(error => console.log(error))
   }
 
@@ -42,6 +43,8 @@ const Login = () => {
               Logga in
             </Button>
           </Form>
+          <h3>Har du inget konto?</h3>
+          <Button onClick={()=>navigate('/register')} variant="warning">Skapa nytt konto</Button>
         </Col>
         <Col xs={{ order: 1 }}></Col>
       </Row>

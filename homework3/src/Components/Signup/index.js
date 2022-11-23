@@ -7,12 +7,13 @@ import Col from "react-bootstrap/Col";
 import { useState } from "react";
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth } from "../../Firebase";
+import { useNavigate } from 'react-router-dom';
 
 
 const Signup = ()=> {
 
 
-    
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
@@ -20,7 +21,7 @@ const Signup = ()=> {
 
   const signUp = ()=> {
     createUserWithEmailAndPassword(auth, email, password)
-    .then(auth => console.log(auth))
+    .then(auth => {navigate('/')})
     .catch(error => console.log(error))
   }
 
@@ -41,7 +42,7 @@ const Signup = ()=> {
                 <Form.Control onChange={(event)=>{setPassword(event.target.value)}} type="password" placeholder="Ange ett lösenord" />
               </Form.Group>
   
-              <Button onClick={signUp} variant="warning" type="submit">
+              <Button onClick={signUp} variant="warning">
                 Skapa kontot!
               </Button>
             </Form>
