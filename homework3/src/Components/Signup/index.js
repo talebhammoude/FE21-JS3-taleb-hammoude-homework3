@@ -8,6 +8,7 @@ import { useState } from "react";
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth } from "../../Firebase";
 import { useNavigate } from 'react-router-dom';
+import ErrorModal from "../ErrorModal";
 
 
 const Signup = ()=> {
@@ -16,18 +17,27 @@ const Signup = ()=> {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [errorText, setErrorText] = useState("");
+
+  
+
+  
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
   
 
 
   const signUp = ()=> {
     createUserWithEmailAndPassword(auth, email, password)
     .then(auth => {navigate('/');})
-    .catch(error => console.log(error))
+    .catch(error => {console.log(error); handleShowModal(); setErrorText("E-postadressen finns redan, välj en annan!")})
   }
 
 
     return (
         <Container>
+        <ErrorModal showmodal = {showModal}  handleCloseModal={handleCloseModal}  errorText={errorText}/>
         <Row>
           <Col xs></Col>
           <Col xs={{ order: 12 }}>
