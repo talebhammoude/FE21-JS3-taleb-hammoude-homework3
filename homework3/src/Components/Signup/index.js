@@ -4,8 +4,26 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { useState } from "react";
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import { auth } from "../../Firebase";
+
 
 const Signup = ()=> {
+
+
+    
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+
+
+  const signUp = ()=> {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then(auth => console.log(auth))
+    .catch(error => console.log(error))
+  }
+
 
     return (
         <Container>
@@ -15,15 +33,15 @@ const Signup = ()=> {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Registrera nytt konto!</Form.Label>
-                <Form.Control type="email" placeholder="Ange e-postadress" />
+                <Form.Control onChange={(event)=>{setEmail(event.target.value)}} type="email" placeholder="Ange e-postadress" />
               </Form.Group>
   
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Vilket lösenord ska du ha?</Form.Label>
-                <Form.Control type="password" placeholder="Ange ett lösenord" />
+                <Form.Control onChange={(event)=>{setPassword(event.target.value)}} type="password" placeholder="Ange ett lösenord" />
               </Form.Group>
   
-              <Button variant="warning" type="submit">
+              <Button onClick={signUp} variant="warning" type="submit">
                 Skapa kontot!
               </Button>
             </Form>

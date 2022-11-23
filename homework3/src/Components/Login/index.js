@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useState } from "react";
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import { auth } from "../../Firebase";
 
 const Login = () => {
 
@@ -14,7 +16,9 @@ const Login = () => {
 
 
   const signIn = ()=> {
-    console.log(email + password);
+    signInWithEmailAndPassword(auth, email, password)
+    .then(auth => console.log(auth))
+    .catch(error => console.log(error))
   }
 
 
