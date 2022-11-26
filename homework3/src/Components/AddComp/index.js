@@ -21,11 +21,12 @@ const AddComp = () => {
     
         try {
             const docRef = await addDoc(collection(db, "movies"), {
-              movieName: "dfgdf",
-              shortDesc: "Lovelace",
-              longDesc: "fgdfgdfgfdgdfg"
+              movieName: document.querySelector("#movie-name").value,
+              shortDesc: document.querySelector("#short-desc").value,
+              longDesc: document.querySelector("#long-desc").value
             });
             console.log("Document written with ID: ", docRef.id);
+            navigate('/home');
           } catch (e) {
             console.error("Error adding document: ", e);
           }
