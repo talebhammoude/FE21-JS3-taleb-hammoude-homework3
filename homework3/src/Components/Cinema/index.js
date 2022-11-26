@@ -12,12 +12,16 @@ const Cinema = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
+
+
+
+
   return (
     <Container>
       <Row>
         <Col xs>
-            <Button variant="info" size="lg">
-            Add a movie
+            <Button onClick={()=>navigate('/add')} variant="info" size="lg">
+            <h3>Add a movie</h3>
             </Button>
         </Col>
         <Col xs={{ order: 12 }}>
