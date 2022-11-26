@@ -3,6 +3,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Cinema from './Components/Cinema';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AddComp from './Components/AddComp';
 
 
 
@@ -16,6 +17,7 @@ function App() {
               <Route path="/" element={<Login/>} />
               <Route path="/home" element={<Cinema/>} />
               <Route path="/register" element={<Signup/>} />
+              <Route path="/add" element={<AddComp/>} />
           </Routes>
         </header>
       </div>

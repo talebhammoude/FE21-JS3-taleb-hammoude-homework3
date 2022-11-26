@@ -5,6 +5,7 @@ import { auth } from "../../Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
+import './styles.css';
 
 
 const Cinema = () => {
@@ -14,9 +15,19 @@ const Cinema = () => {
   return (
     <Container>
       <Row>
-        <Col xs></Col>
+        <Col xs>
+            <Button variant="info" size="lg">
+            Add a movie
+            </Button>
+        </Col>
         <Col xs={{ order: 12 }}>
-          <div>Välkommen {user?.email}</div>
+          <h1>Välkommen {user?.email}</h1>
+
+        
+
+
+
+
 
           <Button onClick={()=>{auth.signOut(); navigate('/');}} variant="danger">
               Logga ut
