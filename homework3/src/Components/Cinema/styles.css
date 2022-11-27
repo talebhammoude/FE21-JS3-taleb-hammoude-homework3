@@ -1,3 +1,22 @@
-h1 {
-    margin-bottom: 100px;
+.welcome {
+    margin-bottom: 50px;
+}
+
+.add-btn {
+    margin-top: 9px;
+}
+
+
+.card-title {
+    color: black;
+}
+
+
+.card-text {
+    color: black;
+}
+
+
+.card-class {
+    margin:15px;
 }
