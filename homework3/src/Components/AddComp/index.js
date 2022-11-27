@@ -23,7 +23,7 @@ const AddComp = () => {
             const docRef = await addDoc(collection(db, "movies"), {
               movieName: document.querySelector("#movie-name").value,
               shortDesc: document.querySelector("#short-desc").value,
-              longDesc: document.querySelector("#long-desc").value
+              longDesc: document.querySelector("#long-desc").value,
             });
             console.log("Document written with ID: ", docRef.id);
             navigate('/home');

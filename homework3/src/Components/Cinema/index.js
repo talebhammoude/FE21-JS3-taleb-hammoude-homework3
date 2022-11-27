@@ -61,7 +61,7 @@ import './styles.css';
         {
             data && data.map((data, index)=>{
                 return(
-                    <Card className="card-class" key={index} style={{ width: '22rem' }}>
+                    <Card className="card-class"  style={{ width: '22rem' }}>
                     <Card.Img variant="top" src="https://img.freepik.com/premium-vector/cinema-movie-logo-with-gradient-background-template_502990-937.jpg?w=996" />
                     <Card.Body>
                       <Card.Title className="card-title">{data.movieName}</Card.Title>
