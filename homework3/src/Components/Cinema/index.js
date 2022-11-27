@@ -19,7 +19,6 @@ import './styles.css';
     const Cinema = () => {
         const [user, loading, error] = useAuthState(auth);
         const [data, setData] = useState([]);
-        const [toggle, setToggle] = useState(false);
         const navigate = useNavigate();
 
 
@@ -35,7 +34,7 @@ import './styles.css';
                         ]
                     )
                 });
-                setToggle(true);
+                
         });
     };
 
@@ -43,12 +42,8 @@ import './styles.css';
     
     useEffect(()=>{
             getMovieList();
-     
-        return ()=> {
-            setData([]);
-        }
 
-    },[toggle])
+    },[])
 
 
 

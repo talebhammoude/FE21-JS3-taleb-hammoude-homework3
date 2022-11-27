@@ -8,6 +8,7 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import { auth } from "../../Firebase";
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from "../ErrorModal";
+import './styles.css';
 
 
 const Login = () => {
@@ -53,10 +54,15 @@ const Login = () => {
             </Button>
           </Form>
           <h3>Har du inget konto?</h3>
-          <Button onClick={()=>navigate('/register')} variant="warning">Skapa nytt konto</Button>
+          <Button className="create-btn" onClick={()=>navigate('/register')} variant="warning">Skapa nytt konto</Button>
+
+
+
+
         </Col>
         <Col xs={{ order: 1 }}></Col>
       </Row>
+
     </Container>
   );
 };
