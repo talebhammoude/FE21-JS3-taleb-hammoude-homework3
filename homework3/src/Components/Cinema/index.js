@@ -8,35 +8,36 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase";
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import './styles.css';
 
 
 
 
 
-    const Cinema = () => {
+    const Cinema = (props) => {
         const [user, loading, error] = useAuthState(auth);
         const [data, setData] = useState([]);
         const navigate = useNavigate();
 
 
 
-    const getMovieList =  async ()=> {
+        const getMovieList =  async ()=> {
             const querySnapshot = await getDocs(collection(db, "movies"));
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
                 setData((prev)=>{
                     return(
                         [
-                            ...prev, doc.data()
+                            ...prev, {movieName: doc.data().movieName, shortDesc: doc.data().shortDesc, longDesc: doc.data().longDesc, id: doc.id} 
                         ]
                     )
                 });
                 
+                
         });
-    };
+        };
 
  
     
@@ -44,6 +45,14 @@ import './styles.css';
             getMovieList();
 
     },[])
+
+
+    const handleOpenMovie = (event)=> {
+        const movieId = event.target.value;
+        navigate('/movie');
+     
+         props.setIdFunc(movieId);
+       }
 
 
 
@@ -58,16 +67,17 @@ import './styles.css';
         <Col xs={{ order: 12 }}>
           <h1 className="welcome">Välkommen {user?.email}</h1>
 
-        {
-            data && data.map((data, index)=>{
-                return(
-                    <Card className="card-class"  style={{ width: '22rem' }}>
-                    <Card.Img variant="top" src="https://img.freepik.com/premium-vector/cinema-movie-logo-with-gradient-background-template_502990-937.jpg?w=996" />
-                    <Card.Body>
-                      <Card.Title className="card-title">{data.movieName}</Card.Title>
-                      <Card.Text className="card-text">
+          {
+            data && data.map((data)=>{
+                return(  
+                    <Card  key={data.id}  className="card-class"  style={{ width: '22rem' }}>
+                    <Card.Img   variant="top" src="https://img.freepik.com/premium-vector/cinema-movie-logo-with-gradient-background-template_502990-937.jpg?w=996" />
+                    <Card.Body >
+                      <Card.Title  className="card-title">{data.movieName}</Card.Title>
+                      <Card.Text  className="card-text">
                         {data.shortDesc}
                       </Card.Text>
+                    <Button variant="secondary" onClick={handleOpenMovie} value={data.id}>Read more</Button>
                     </Card.Body>
                   </Card>
                 )

@@ -27,7 +27,7 @@ function App() {
         <header className="App-header">
           <Routes>
               <Route path="/" element={<Login setIdFunc={setIdFunc}/>} />
-              <Route path="/home" element={<Cinema/>} />
+              <Route path="/home" element={<Cinema setIdFunc={setIdFunc}/>} />
               <Route path="/register" element={<Signup/>} />
               <Route path="/add" element={<AddComp/>} />
               <Route path="/movie" element={<MovieComp id={id}/>} />

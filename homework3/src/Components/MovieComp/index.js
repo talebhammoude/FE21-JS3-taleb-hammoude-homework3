@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
 import Card from 'react-bootstrap/Card';
-import { useEffect , useState } from "react";
+import { useState } from "react";
 import './styles.css';
 
 
@@ -26,7 +26,7 @@ const MovieComp = (props) => {
     
         if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
-        setData(...data, docSnap.data())
+        setData(...data, docSnap.data());
         } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
